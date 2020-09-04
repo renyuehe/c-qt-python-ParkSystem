@@ -1,0 +1,21 @@
+
+1、
+QWidget 继承的类 不能 moveToQThread 怎么解决
+
+2、
+        /* ？？？？？？？？为什么 Image scaled 后 转成 pixmap 画面大小没有得到调整 ??????? */
+        /*
+            myImage->load(":/fish1.jpg");
+            myImage->scaled(100,100,Qt::IgnoreAspectRatio,Qt::FastTransformation);
+            *myPixmap = QPixmap::fromImage(*myImage);
+        */
+
+3、udp 接收顺序可能是不一样的，所以需要给出 传输帧的序号 才能拼接图片
+
+4、        UDP传输
+	/* 接受的频率 必须大于 发送频率，否则会出现混乱 */
+        	/* 代码尽量精简，以提高接受的频率 */
+
+5、/* 注意线程函数 while(1) 无法返回的话,则无法释放,除了terminate杀死线程,还有什么办法可以终止线程不异常 */
+
+6、/* 信号触发槽函数(    while(1)循环那种   ), 槽函数并未停止的情况下, 再次触发信号！！！会再入, 还是信号入队, 还是信号丢失?*/
