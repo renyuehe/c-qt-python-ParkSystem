@@ -1,11 +1,23 @@
 #include "widget.h"
 #include "ui_widget.h"
+#include <QApplication>
+#include <QDesktopWidget>
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    QDesktopWidget* desktop = QApplication::desktop();
+    /*
+     * In the illustration above,
+     * Application One's primary screen is screen 0,
+     * and App Two's primary screen is screen 1.
+     * */
+    qDebug()<<"这是: "<<desktop->screenNumber()<<" 号显示器";
+    qDebug()<<"分辨率: "<<desktop->screenGeometry(this).width()<<desktop->screenGeometry(this).height();
+
+
     ui->label_brand->setPixmap(QPixmap(":/car.png").scaled(ui->label_brand->width(),ui->label_brand->height()));
 
     /* 设置系统图标 */

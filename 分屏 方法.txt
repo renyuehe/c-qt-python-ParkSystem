@@ -1,0 +1,14 @@
+
+想实现这样一种功能：主程序的主窗口在PC上显示，而其子dialog在另外的显示器上显示（做实验时方便监控且不会有多余的干扰）。
+
+方法如下 ：建立Qdesktopwidget对象
+QDesktopWidget* desktop = Application::desktop();
+
+获取当前显示器的个数
+
+int N = desktop->screenCount();
+
+如果有两个显示，则N=2，qt默认的计算机主机的index = 0，外接显示器的index = 1；
+QDialog 有个成员函数叫setGeometry，只需要将dialog对象的Geometry设置为index为1的显示器即可，默认为0.如果要显示的dialog的对象为mdlg，则
+mdlg.setGeometry(desktop->screenGeometry(1));
+mdlg.show();
