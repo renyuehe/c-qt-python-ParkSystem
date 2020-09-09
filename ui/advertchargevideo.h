@@ -5,6 +5,7 @@
 #include <QPixmap>
 #include <QDebug>
 #include <QCloseEvent>
+#include "qrencode/qrencode.h"
 
 namespace Ui {
 class charge;
@@ -20,6 +21,7 @@ public:
 
 public slots:
     void picShow(int i=-1);
+    void codeShow(QPixmap);
 
 private:
     void closeEvent(QCloseEvent *e);
@@ -30,6 +32,7 @@ private:
     QPixmap chargePix;
     QString picStr;
 
+    /* 二维码 */
 };
 
 #endif // CHARGE_H

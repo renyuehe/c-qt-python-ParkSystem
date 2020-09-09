@@ -89,8 +89,8 @@ void Flow::processPendingDatagram(){
         qDebug()<<"arr = :"<<arr;
         qDebug()<<"ret = "<<ret;
 
-        //if(ret == 16)
-        if(ret == 12)
+        if(ret == 16)
+        //if(ret == 12)
         {/* 是结构体 */
             /* 说明是 结构体, 把接收到的buf 转换成结构体 */
             //infoPtr = (struct info *)arr;
@@ -98,17 +98,17 @@ void Flow::processPendingDatagram(){
 
             /* 大端转小端 ?? 好像不需要 ?? 为什么不需要呢 */
 
-//            for(int i = 0; i<20; i++){
-//                qDebug("%d : %#x",i,arr[i]);
-//            }
-//            qDebug()<<"接受到的结构体";
-//            qDebug()<<"infoptr.size = %ld"<<infoPtr->size;
-//            qDebug()<<"infoptr.type = %d"<<infoPtr->type;
-//            qDebug()<<"infoptr.count = %d"<<infoPtr->count;
-//            qDebug()<<"本地结构体";
-//            qDebug()<<"uPicInfo.size = %ld"<<uPicInfo.size;
-//            //qDebug()<<"uPicInfo.type = %d"<<uPicInfo.type;
-//            qDebug()<<"uPicInfo.count = %d"<<uPicInfo.count;
+            for(int i = 0; i<20; i++){
+                qDebug("%d : %#x",i,arr[i]);
+            }
+            qDebug()<<"接受到的结构体";
+            qDebug()<<"infoptr.size = %ld"<<infoPtr->size;
+            qDebug()<<"infoptr.type = %d"<<infoPtr->type;
+            qDebug()<<"infoptr.count = %d"<<infoPtr->count;
+            qDebug()<<"本地结构体";
+            qDebug()<<"uPicInfo.size = %ld"<<uPicInfo.size;
+            //qDebug()<<"uPicInfo.type = %d"<<uPicInfo.type;
+            qDebug()<<"uPicInfo.count = %d"<<uPicInfo.count;
 
             if(infoPtr->type == 0){/*头*/
                 picBuf->clear();

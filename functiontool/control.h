@@ -19,6 +19,7 @@ signals:
     void connectOvertime();
     /* 套接字可读 返回的信息 */
     void echoInfo(QString str);
+    void echoQrencode(QString str);
 
 private slots:
     void connected();
@@ -30,6 +31,8 @@ private slots:
 private:
     /* 控制套接字 */
     QTcpSocket *myTcpSocket;
+
+    struct message_user myMessage;
 };
 
 #endif // CONTROL_H

@@ -22,16 +22,18 @@ struct select{
     char values[16];
 };
 
-struct ctlMsg{
-    unsigned char type;/* type: 0x0 控制类 0xf 传送数据 */
-    unsigned char instruct;/* 0x0001 抬起杆 ......等等 */
-    unsigned char data[1024];
+/*信息结构体*/
+struct __attribute__ ((__packed__)) message_user{
+    char buf[32];//消息指令结构体
+    char sqlbuf[3096];
+    int nrow;//数据库函数执行后得到的记录的数目
+    int ncolumn;//数据库函数执行得到字段的数目
 };
 
 /* UDP报头 报尾 */
 struct __attribute__ ((__packed__)) info{
-     //long long size;
-     long size;
+     long long size;
+     //long size;
      int type;
      int count;
 };

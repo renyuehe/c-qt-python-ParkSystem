@@ -16,6 +16,7 @@
 #include "functiontool/advertincharge.h"
 #include "functiontool/flow.h"
 #include "functiontool/control.h"
+#include "qrencode/qrencode.h"
 
 #include "config.h"/*全局配置*/
 
@@ -84,6 +85,11 @@ private slots:
     void on_pushButton_pole_clicked();
     /* 摄像头 控制 */
     void on_pushButton_camCtl_clicked();
+
+    /* advertincharge 处理逻辑 */
+    void dealQrencode(QString);
+
+    void on_pushButton_testEcho_clicked();
 
 signals:
     /* 开始运行时间 */

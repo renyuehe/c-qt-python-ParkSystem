@@ -101,6 +101,9 @@ Widget::Widget(QWidget *parent) :
     connect(this,SIGNAL(advertStart()),myChargeAdvert,SLOT(advertRun()));
     connect(myChargeAdvert,SIGNAL(sendPicNumToChargeAdvertVedio(int)),myChargeAdvertVideo,SLOT(picShow(int)));
 
+    connect(myChargeAdvert,SIGNAL(sendCodePix(QPixmap)),myChargeAdvertVideo,SLOT(codeShow(QPixmap)));
+
+
 
     /* Control 类 */
 /* 为什么在  Lambda 表达式中 ui->pushButton_connect->setEnabled(true); 就卡死了？？
@@ -131,6 +134,8 @@ Widget::Widget(QWidget *parent) :
 
     /* 返回套接字 可读 信息 */
     connect(myControl, SIGNAL(echoInfo(QString)),myMasterSelect, SLOT(showInfo(QString)));
+    connect(myControl, SIGNAL(echoQrencode(QString)),this, SLOT(dealQrencode(QString)));
+
 
     //void tcpConnectOk();
     //void tcpDisconnectOk();
@@ -282,7 +287,16 @@ void Widget::setBtnDisconnectEnable(){
 }
 void Widget::setBtnConnectEnable(){
     ui->pushButton_connect->setText("连接");
+    ui->pushButton_start->setText("运行");
     ui->pushButton_connect->setEnabled(true);
+}
+/* 二维码逻辑处理 */
+void Widget::dealQrencode(QString str){
+    qDebug()<<"__________"<<__LINE__;
+    myChargeAdvert->isAdervt = 0;
+    myChargeAdvert->flagRun = 0;
+    myChargeAdvert->codeStr = str;
+    /* 应该跳到 adverincharge 中的 while循环中 找到二维码那一块 搞二维码的 生成 和显示 */
 }
 
 /* 设置当前 socketWidget 界面 */
@@ -321,6 +335,11 @@ void Widget::on_pushButton_camCtl_clicked()
     }
 }
 
+void Widget::on_pushButton_testEcho_clicked()
+{
+    emit(poleInfo("测试","0"));
+}
+
 /****************** 线程类 ********************/
 /* 重写 */
 void MyThr::run(){
@@ -329,6 +348,8 @@ void MyThr::run(){
     /* 线程事件轮询 */
     exec();
 }
+
+
 
 
 

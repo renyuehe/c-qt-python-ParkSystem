@@ -23,6 +23,8 @@ private slots:
     /* 显示信息在 主窗口 */
     void showInfo(QString);
 
+    void on_pushButton_parkStat_clicked();
+
 private:
     Ui::MasterSelect *ui;
 };

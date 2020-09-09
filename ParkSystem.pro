@@ -44,6 +44,7 @@ HEADERS += \
         functiontool/control.h \
         functiontool/flow.h \
         functiontool/timer.h \
+        qrencode/qrencode.h \
         ui/advertchargevideo.h \
         ui/masterlogin.h \
         ui/masterselect.h \
@@ -66,3 +67,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     source/pic.qrc
+
+DISTFILES += \
+    qrencode/libqrencode.dll \
+    qrencode/libqrencode.dll.a
+
+win32: LIBS += -L$$PWD/qrencode/ -llibqrencode.dll
+
+INCLUDEPATH += $$PWD/qrencode
+DEPENDPATH += $$PWD/qrencode

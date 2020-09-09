@@ -28,7 +28,14 @@ void MasterSelect::on_pushButton_historySearch_clicked(){
     }
 }
 
+void MasterSelect::on_pushButton_parkStat_clicked()
+{
+   emit(searchInfo("查询状态",nullptr));
+}
+
 void MasterSelect::showInfo(QString str){
     //ui->textBrowser->clear();
     ui->textBrowser->setText(str);
 }
+
+
